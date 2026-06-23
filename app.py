@@ -1227,9 +1227,9 @@ def render_results():
 
     tab_labels = [f"{ELEMENTS[e]['emoji']} {e}" for e in ELEMENT_ORDER]
     try:
-        default_idx = ELEMENT_ORDER.index(short_elem)
-        tabs = st.tabs(tab_labels, default=default_idx)
-    except (TypeError, ValueError):
+        default_tab = tab_labels[ELEMENT_ORDER.index(short_elem)]
+        tabs = st.tabs(tab_labels, default=default_tab)
+    except (TypeError, ValueError, IndexError):
         tabs = st.tabs(tab_labels)
 
     for i, elem in enumerate(ELEMENT_ORDER):
